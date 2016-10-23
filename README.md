@@ -1,27 +1,19 @@
-# Laravel PHP Framework
+Descarte Certo
+===================
+Another college project focused on spread content about recycle and sustainability. This is a study object.
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+### Table of contents:
+- [What you have to have in your system](#what-you-have-to-have-in-your-system)
+- [What if i want to test it online](#what-if-i-want-to-test-it-online)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+#### What you have to have in your system
+ * [PHP >= 5.6.4](http://php.net/downloads.php)
+ * [MySQL Server 5.x.x](http://dev.mysql.com/downloads/mysql/) or similar as DBMS
+ * [Composer](https://getcomposer.org/download/)
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+#### What if I want to test it online?
+Click over there :arrow_right: <https://descarte-certo.herokuapp.com/>
 
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+> **Note:**
+>
+> - This application was made as a college project with **learning purpose**.
