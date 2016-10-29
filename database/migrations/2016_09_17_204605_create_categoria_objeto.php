@@ -17,6 +17,7 @@ class CreateCategoriaObjeto extends Migration
             $table->increments('cd_categoria_objeto');
             $table->string('nm_categoria_objeto', 100);
             $table->string('ds_categoria_objeto', 500)->nullable();
+            $table->string('im_categoria_objeto', 500)->nullable();
         });
     }
 

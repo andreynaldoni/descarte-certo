@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/font-awesome.css">
 </head>
-<body>
     <!-- Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -25,9 +24,10 @@
                 <a class="navbar-brand" href="/"><i class="fa fa-recycle" style="vertical-align:middle"></i> Descarte Certo</a>
             </div>
             <div class="navbar-collapse collapse" id="navbar">
-                <ul class="nav navbar-nav navbar-right">
+                <ul id="menu-itens" class="nav navbar-nav navbar-right">
                     <li {{ Request::segment(1) == '' ? 'class=active' : '' }}><a href="/"><i class="fa fa-home"></i> Home</a></li>
                     <li {{ Request::segment(1) == 'Pontos%20de%20Descarte' ? 'class=active' : '' }}><a href="/Pontos de Descarte"><i class="fa fa-map-o"></i> Pontos de descarte</a></li>
+                    <li><a href="#"><i class="fa fa-user-circle-o"></i> Administrativo</li></a>
                     <!-- <li><a href="#about"><i class="fa fa-info-circle"></i> Sobre</a></li>
                     <li><a href="#contact"><i class="fa fa-paper-plane-o"></i> Contato</a></li> -->
                 </ul>
@@ -35,17 +35,62 @@
         </div>
     </nav>
     <!-- /Navbar -->
-    <div class="container">
+    
         @yield('content')
-    </div>
-    <footer class="footer">
-        <div class="container">
-            <p class="text-footer">&copy; 2016 Descarte Certo · Todos os direitos reservados</p>
+    
+    <footer>
+        <div class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2>Descarte Certo</h2>
+                        <p>
+                            Objeto de aprendizagem criado pelos alunos Andrey, Paulo, Yunes 
+                            Luiz e Emerson da <a href="www.fatecpg.com.br">FATEC Praia Grande</a>, 
+                            para a disciplina de Gestão de Projetos do Profº Me.: 
+                            <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4418727P0">Nelson Nascimento Junior.</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h2>Contato</h2>
+                        <ul class="footer-team">
+                            <li>
+                                <a href="https://en.linkedin.com/in/andreynaldoni" target="_blank">
+                                    <i class="fa fa-linkedin-square"></i><span class="fa-text"> /in/andreynaldoni</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://br.linkedin.com/in/yunesnoronha" target="_blank">
+                                    <i class="fa fa-linkedin-square"></i><span class="fa-text"> /in/yunesnoronha</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://br.linkedin.com/in/paulosb" target="_blank">
+                                    <i class="fa fa-linkedin-square"></i><span class="fa-text"> /in/paulosb</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        <h2>Siga-nos</h2>
+                        <p class="footer-logo"><i class="fa fa-recycle"></i></p>
+                        <h3>Descarte Certo</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bar">
+            <div class="container">
+                <p class="text-footer">&copy; 2016 Descarte Certo · Todos os direitos reservados</p>
+            </div>
         </div>
     </footer>
     <!-- JS Dependencies -->
     <script src="/js/jquery-3.1.0.js"></script>
     <script src="/js/bootstrap.js"></script>
+    @if (Request::path() == '/')
+        <script src="/js/main.js"></script>
+    @endif    
     @yield('script')
 </body>
 </html>

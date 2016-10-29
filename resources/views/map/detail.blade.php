@@ -3,26 +3,28 @@
 @section('title', 'Pontos de Descarte > ' . $ponto->nm_ponto_descarte)
 
 @section('content')
-    <div class="page-header">
-        <h1 class="text-center">{{ $ponto->nm_ponto_descarte }}</h1>
-    </div>
-    <ol class="breadcrumb">
-        <li><a href="/">Home</a></li>
-        <li><a href="/Pontos de Descarte">Pontos de Descarte</a></li>
-        <li class="active">{{ $ponto->nm_ponto_descarte }}</li>
-    </ol>
-    <div class="thumbnail">
-        <div id="gmap_canvas" style="height:440px;width:100%;"></div>
-        <div class="caption">
-            <p class="lead">{{ $ponto->ds_ponto_descarte }}</p>
+    <div class="container" style="margin-top: 30px">
+        <div class="page-header">
+            <h1 class="text-center">{{ $ponto->nm_ponto_descarte }}</h1>
         </div>
-    </div>
-    <div class="row container">
-        <h2 class="text-center">Materiais Aceitos</h2>
-        <div class="list-group">
-            @foreach($ponto->categorias as $categoria)
-                <a href="/{{ $categoria->nm_categoria_objeto }}" class="list-group-item">{{ $categoria->nm_categoria_objeto }}</a>
-            @endforeach
+        <div class="btn-group btn-breadcrumb">
+            <a href="/" class="btn btn-success"><i class="glyphicon glyphicon-home"></i></a>
+            <a href="/Pontos de Descarte" class="btn btn-success">Pontos de Descarte</a>
+            <a href="#" class="btn btn-success disabled" role="button">{{ $ponto->nm_ponto_descarte }}</a>
+        </div>
+        <div class="thumbnail">
+            <div id="gmap_canvas" style="height:440px;width:100%;"></div>
+            <div class="caption">
+                <p class="lead">{{ $ponto->ds_ponto_descarte }}</p>
+            </div>
+        </div>
+        <div class="row container">
+            <h2 class="text-center">Materiais Aceitos</h2>
+            <div class="list-group">
+                @foreach($ponto->categorias as $categoria)
+                    <a href="/{{ $categoria->nm_categoria_objeto }}" class="list-group-item">{{ $categoria->nm_categoria_objeto }}</a>
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection
