@@ -34,7 +34,10 @@
                 <ul id="menu-itens" class="nav navbar-nav navbar-right">
                     <li {{ Request::segment(1) == '' ? 'class=active' : '' }}><a href="/"><i class="fa fa-home"></i> Home</a></li>
                     <li {{ Request::segment(1) == 'Pontos%20de%20Descarte' ? 'class=active' : '' }}><a href="/Pontos de Descarte"><i class="fa fa-map-o"></i> Pontos de descarte</a></li>
-                    <li><a href="#"><i class="fa fa-user-circle-o"></i> Administrativo</li></a>
+                    <li {{ Request::segment(1) == 'admin' ? 'class=active' : '' }}><a href="/Administrativo"><i class="fa fa-user-circle-o"></i> Administrativo</a></li>
+                    @if(Auth::check())
+                        <li><a href="/logout"><i class="fa fa-sign-out"></i> Sair</a></li>
+                    @endif
                     <!-- <li><a href="#about"><i class="fa fa-info-circle"></i> Sobre</a></li>
                     <li><a href="#contact"><i class="fa fa-paper-plane-o"></i> Contato</a></li> -->
                 </ul>

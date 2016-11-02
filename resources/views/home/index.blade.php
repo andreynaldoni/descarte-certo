@@ -7,10 +7,10 @@
         <div class="container">
             <div class="black-bg">
                 <div class="main-text">
-                    <h1 class="text-center white-text" style="font-size: 48px">
+                    <h1 class="text-center white-text">
                         Seja bem vindo(a) ao nosso website
                     </h1>
-                    <p class="text-center white-text lead" style="font-size: 36px">
+                    <p class="text-center white-text lead">
                         Neste espaço você irá aprender mais sobre o descarte adequado de lixo
                     </p>
                 </div>

@@ -12,9 +12,13 @@ class CategoryController extends Controller
     public function index($categoria)
     {
         $categoria = CategoriaObjeto::where('nm_categoria_objeto', $categoria)->first();
-        $objetos = ObjetoDescarte::where('cd_categoria_objeto', $categoria->cd_categoria_objeto)->get();
-        //$conteudos = ConteudoObjeto::where('cd_objeto_descarte', $conteudo)->first();
 
-        return view('category.index', compact('categoria', 'objetos'));
+        if ($categoria) {
+            $objetos = ObjetoDescarte::where('cd_categoria_objeto', $categoria->cd_categoria_objeto)->get();
+
+            return view('category.index', compact('categoria', 'objetos'));
+        } else {
+            return redirect()->action('HomeController@index');
+        }
     }
 }

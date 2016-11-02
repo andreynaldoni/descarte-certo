@@ -1,15 +1,16 @@
 @extends('layout')
 
-@section('title', $categoria->nm_categoria_objeto)
+@section('title', 'Administração > ' . $categoria->nm_categoria_objeto)
 
 @section('content')
     <div class="container" style="margin-top: 30px">
         <div class="page-header">
-            <h1>{{ $categoria->nm_categoria_objeto }} <small>{{ $categoria->ds_categoria_objeto }}</small></h1>
+            <h1 class="text-center">{{ $categoria->nm_categoria_objeto }}</h1>
         </div>
         <div class="btn-group btn-breadcrumb">
             <a href="/" class="btn btn-success"><i class="glyphicon glyphicon-home"></i></a>
-            <a href="#" class="btn btn-success disabled" role="button">{{ $categoria->nm_categoria_objeto }}</a>
+            <a href="/Administrativo" class="btn btn-success">Administrativo</a>
+            <a href="/Administrativo/{{ $categoria->nm_categoria_objeto }}" class="btn btn-success disabled" role="button">{{ $categoria->nm_categoria_objeto }}</a>
         </div>
         <blockquote>
             <p class="lead text-success">
@@ -19,7 +20,7 @@
         @if (!$objetos->isEmpty())
             <div class="list-group">
                 @foreach ($objetos as $key => $objeto)
-                    <a href="/{{ $categoria->nm_categoria_objeto }}/{{ $objeto->nm_objeto_descarte }}" class="list-group-item">
+                    <a href="/Administrativo/{{ $categoria->nm_categoria_objeto }}/{{ $objeto->nm_objeto_descarte }}" class="list-group-item">
                         @if (count($objeto->conteudos))
                             <span class="badge">{{ count($objeto->conteudos) }}</span>
                         @endif
