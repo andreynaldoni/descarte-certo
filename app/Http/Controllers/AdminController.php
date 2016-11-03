@@ -39,7 +39,11 @@ class AdminController extends Controller
         return view('admin.object', compact('categoria', 'objeto', 'conteudos'));
     }
 
-    public function conteudo() {
-        return view('admin.content');
+    public function conteudo($categoria, $objeto, $conteudo) {
+        $categoria = CategoriaObjeto::where('nm_categoria_objeto', $categoria)->first();
+        $objeto = ObjetoDescarte::where('nm_objeto_descarte', $objeto)->first();
+        $conteudo = ConteudoObjeto::where('nm_conteudo_objeto', $conteudo)->first();
+
+        return view('admin.content', compact('categoria', 'objeto', 'conteudo'));
     }
 }

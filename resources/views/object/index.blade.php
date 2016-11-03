@@ -17,7 +17,7 @@
                 {{ $objeto->ds_objeto_descarte }}
             </p>
         </blockquote>
-        <div class="row container">
+        @if (!$conteudos->isEmpty())
             <div class="list-group">
                 @foreach($conteudos as $key => $conteudo)
                     <a href="/{{ $categoria->nm_categoria_objeto }}/{{ $objeto->nm_objeto_descarte }}/{{ $conteudo->nm_conteudo_objeto }}" class="list-group-item">
@@ -26,6 +26,11 @@
                     </a>
                 @endforeach
             </div>
-        </div>
+        @else
+            <p class="lead text-center">
+                Parece que não há conteúdos cadastrados no momento :(<br>
+                Tente novamente mais tarde :)
+            </p>
+        @endif
     </div>
 @endsection

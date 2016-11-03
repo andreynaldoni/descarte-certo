@@ -52,7 +52,7 @@
                                 <label for="categoria">Categoria:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input name="categoria" type="text" class="form-control" placeholder="Ex.: Plástico" maxlength="60" required="">
+                                    <input name="categoria" type="text" class="form-control" placeholder="Ex.: Plástico" maxlength="60" required>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <label for="descricao">Descrição:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input name="descricao" type="text" class="form-control" placeholder="Ex.: Materiais Plásticos (Garrafas, Copos)" maxlength="60" required="">
+                                    <input name="descricao" type="text" class="form-control" placeholder="Ex.: Materiais Plásticos (Garrafas, Copos)" maxlength="60" required>
                                 </div>
                             </div>
                         </div>
