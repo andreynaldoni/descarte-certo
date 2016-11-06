@@ -37,7 +37,7 @@ class CreatePontoDescarte extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ponto_descarte');
         Schema::dropIfExists('categoria_objeto_ponto_descarte');
+        Schema::dropIfExists('ponto_descarte');
     }
 }
