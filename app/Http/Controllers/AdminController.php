@@ -23,12 +23,12 @@ class AdminController extends Controller
         $categoria = CategoriaObjeto::where('nm_categoria_objeto', $categoria)->first();
 
         if ($categoria) {
-            $objetos = ObjetoDescarte::where('cd_categoria_objeto', $categoria->cd_categoria_objeto)->get();
+            $objetos = ObjetoDescarte::find($categoria->cd_categoria_objeto)->get();
 
             return view('admin.category', compact('categoria', 'objetos'));
-        } else {
-            return redirect()->action('AdminController@index');
         }
+        
+        return redirect()->action('AdminController@index');
     }
     
     public function objeto($categoria, $objeto) {
@@ -59,9 +59,9 @@ class AdminController extends Controller
             'im_categoria_objeto' => '/img/category/3.png',
         ])){
             return redirect('/Administrativo');
-        } else {
-            return redirect('/Administrativo')->withInput();
         }
+
+        return redirect('/Administrativo')->withInput();
     }
 
     public function postObjeto(Request $request, $categoria, $id) {
@@ -76,15 +76,15 @@ class AdminController extends Controller
             'cd_categoria_objeto' => $id,
         ])){
             return redirect('/Administrativo/' . $categoria);
-        } else {
-            return redirect('/Administrativo/' . $categoria)->withInput();
         }
+        
+        return redirect('/Administrativo/' . $categoria)->withInput();
     }
 
     public function postConteudo(Request $request, $categoria, $objeto, $id) {
         $this->validate($request, [
             'nome' => 'required|max:100',
-            'descricao' => 'required|max:2000',
+            'descricao' => 'required|max:5000',
             'video' => 'required|max:100',
             'imagem' => 'required|max:1000'
         ]);
@@ -98,9 +98,9 @@ class AdminController extends Controller
             'cd_objeto_descarte' => $id,
         ])){
             return redirect('/Administrativo/' . $categoria . '/' . $objeto);
-        } else {
-            return redirect('/Administrativo/' . $categoria . '/' . $objeto)->withInput();
         }
+
+        return redirect('/Administrativo/' . $categoria . '/' . $objeto)->withInput();
     }
 
     public function postEditCategoria(Request $request, $categoria) {
@@ -109,50 +109,53 @@ class AdminController extends Controller
             'descricao' => 'required|max:200'
         ]);
 
-        if(CategoriaObjeto::where('cd_categoria_objeto', $request->input('id'))->update([
+        if(CategoriaObjeto::find($request->input('id'))->update([
+            'id' => 'required|numeric',
             'nm_categoria_objeto' => $request->input('categoria'),
             'ds_categoria_objeto' => $request->input('descricao'),
         ])){
             return redirect('/Administrativo/' . $categoria);
-        } else {
-            return redirect('/Administrativo/' . $categoria)->withInput();
         }
+        
+        return redirect('/Administrativo/' . $categoria)->withInput();
     }
 
     public function postEditObjeto(Request $request, $categoria, $objeto) {
         $this->validate($request, [
+            'id' => 'required|numeric',
             'objeto' => 'required|max:100',
             'descricao' => 'required|max:200'
         ]);
 
-        if(ObjetoDescarte::where('cd_objeto_descarte', $request->input('id'))->update([
+        if(ObjetoDescarte::find($request->input('id'))->update([
             'nm_objeto_descarte' => $request->input('objeto'),
             'ds_objeto_descarte' => $request->input('descricao')
         ])){
             return redirect('/Administrativo/' . $categoria . '/' . $objeto);
-        } else {
-            return redirect('/Administrativo/' . $categoria. '/' . $objeto)->withInput();
         }
+
+        return redirect('/Administrativo/' . $categoria. '/' . $objeto)->withInput();
     }
 
     public function postEditConteudo(Request $request, $categoria, $objeto, $conteudo) {
         $this->validate($request, [
+            'id' => 'required|numeric',
             'nome' => 'required|max:100',
-            'descricao' => 'required|max:2000',
+            'descricao' => 'required|max:5000',
             'video' => 'required|max:100',
             'imagem' => 'required|max:1000'
         ]);
 
-        if(ConteudoObjeto::where('cd_conteudo_objeto', $request->input('id'))->update([
+        if(ConteudoObjeto::find($request->input('id'))->update([
             'nm_conteudo_objeto' => $request->input('nome'),
             'ds_conteudo_objeto' => $request->input('descricao'),
             'ds_caminho_video' => $request->input('video'),
             'ds_caminho_imagem' => $request->input('imagem')
         ])){
             return redirect('/Administrativo/' . $categoria . '/' . $objeto . '/' . $conteudo);
-        } else {
-            return redirect('/Administrativo/' . $categoria. '/' . $objeto . '/' . $conteudo)->withInput();
         }
+
+        return redirect('/Administrativo/' . $categoria. '/' . $objeto . '/' . $conteudo)->withInput();
     }
 
     public function postDeleteCategoria(Request $request) {
@@ -160,7 +163,7 @@ class AdminController extends Controller
             'id' => 'required'
         ]);
 
-        CategoriaObjeto::where('cd_categoria_objeto', $request->input('id'))->delete();
+        CategoriaObjeto::find($request->input('id'))->delete();
 
         return redirect('/Administrativo/');
     }
@@ -170,7 +173,7 @@ class AdminController extends Controller
             'id' => 'required'
         ]);
         
-        ObjetoDescarte::where('cd_objeto_descarte', $request->input('id'))->delete();
+        ObjetoDescarte::find($request->input('id'))->delete();
 
         return redirect('/Administrativo/' . $categoria);
     }
@@ -180,7 +183,7 @@ class AdminController extends Controller
             'id' => 'required'
         ]);
 
-        ConteudoObjeto::where('cd_conteudo_objeto', $request->input('id'))->delete();
+        ConteudoObjeto::find($request->input('id'))->delete();
 
         return redirect('/Administrativo/' . $categoria . '/' . $objeto);
     }

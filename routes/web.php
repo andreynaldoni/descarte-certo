@@ -16,11 +16,9 @@ Route::get('/', 'HomeController@index');
 Route::get('/Pontos de Descarte', 'MapController@index');
 Route::get('/Pontos de Descarte/{ponto}', 'MapController@detalhe');
 
-Route::post('/Pontos de Descarte/edit', 'MapController@postEditPonto');
-Route::post('/Pontos de Descarte/{ponto}/edit', 'MapController@PostEditDetalhe');
-
 Route::post('/Pontos de Descarte', 'MapController@postPonto');
-Route::post('/Pontos de Descarte/{ponto}/{id}', 'MapController@postDetalhe');
+Route::post('/Pontos de Descarte/{ponto}/edit', 'MapController@postEditPonto');
+Route::post('/Pontos de Descarte/{ponto}/delete', 'MapController@PostDeletePonto');
 
 Route::get('/Administrativo', 'AdminController@index');
 Route::get('/Administrativo/{categoria}', 'AdminController@categoria');

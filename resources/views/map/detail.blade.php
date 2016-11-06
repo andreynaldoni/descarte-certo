@@ -32,27 +32,66 @@
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target=".edit-site">
                     <h4 style="margin: 2px"><i class="fa fa-pencil"></i> Editar Ponto</h4 style="padding: 0;margin: 0">
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-category">
-                    <h4 style="margin: 2px"><i class="fa fa-plus-circle"></i> Novo Material Aceito</h4 style="padding: 0;margin: 0">
-                </button>
             </div>
-            <!-- Admin Category Add Modal -->
-            <form role="form" method="POST" action="/Pontos de Descarte">
-                <div class="modal fade add-category" tabindex="-1" role="dialog">
+            <!-- Admin Map Edit Modal -->
+            <form role="form" method="POST" action="/Pontos de Descarte/{{ $ponto->nm_ponto_descarte }}/edit">
+                <div class="modal fade edit-site" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header bg-primary">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h2 class="modal-title text-center">Adicionando Ponto de Descarte</h2>
+                                <h2 class="modal-title text-center">Editando {{ $ponto->nm_ponto_descarte }}</h2>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <div class="col-sm-6">
+                                        <label for="id">Código:</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                            <input name="id" type="hidden" value="{{ $ponto->cd_ponto_descarte }}">
+                                            <input name="id" type="text" class="form-control" value="{{ $ponto->cd_ponto_descarte }}" disabled>
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="nome">Nome:</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                                            <input name="nome" type="text" class="form-control" placeholder="Ex.: Ecoponto Praia Grande" maxlength="60" value="{{ $ponto->nm_ponto_descarte }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-sm-12">
+                                        <label for="descricao">Descrição:</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                                            <input name="descricao" type="text" class="form-control" placeholder="Ex.: Próximo a FATEC Praia Grande" value="{{ $ponto->ds_ponto_descarte }}" maxlength="100" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-sm-6">
+                                        <label for="latitude">Latitude:</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                                            <input name="latitude" type="text" class="form-control" placeholder="Ex.: -24.0054046" maxlength="20" value="{{ $ponto->cd_latitude }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="longitude">Longitude:</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                                            <input name="longitude" type="text" class="form-control" placeholder="Ex.: -46.41278269999998" maxlength="20" value="{{ $ponto->cd_longitude }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
                                     <div class="col-sm-12">
                                         <label for="nome">Categoria:</label>
                                         <div class="input-group">
-                                            <?php $checked = "" ?>
-                                            @foreach($categorias as $key => $item)
+                                            @foreach($categorias as $item)
+                                                <?php $checked = "" ?>
                                                 @foreach($ponto->categorias as $categoria)
                                                     @if ($categoria->nm_categoria_objeto == $item->nm_categoria_objeto)
                                                         <?php $checked = "checked" ?>
@@ -67,13 +106,36 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" class="btn btn-success">Editar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
-            <!-- /Admin Category Add Modal -->
+            <!-- /Admin Map Edit Modal -->
+            <!-- Admin Map Delete Modal -->
+            <form method="POST" action="/Pontos de Descarte/{{ $ponto->nm_ponto_descarte }}/delete">
+                <input name="id" type="hidden" value="{{ $ponto->cd_ponto_descarte }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="modal fade delete-site" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h2 class="modal-title text-center">Excluir {{ $ponto->nm_ponto_descarte }}</h2>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="text-center">Você realmente tem certeza de que vai excluir "{{ $ponto->nm_ponto_descarte }}"?</h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- /Admin Map Delete Modal -->
         @endif
     </div>
 @endsection

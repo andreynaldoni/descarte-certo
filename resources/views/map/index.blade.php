@@ -19,6 +19,11 @@
                     </a>
                 @endforeach
             </div>
+        @else
+            <p class="lead text-center">
+                Parece que não há pontos de descarte cadastrados em nosso sistema :(<br>
+                Aproveite e cadastre um :)
+            </p>
         @endif
         @if(Auth::check())
             <div class="pull-right">
@@ -75,6 +80,16 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
                                             <input name="longitude" type="text" class="form-control" placeholder="Ex.: -46.41278269999998" maxlength="20" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="col-sm-12">
+                                        <label for="nome">Categoria:</label>
+                                        <div class="input-group">
+                                            @foreach($categorias as $item)
+                                                <input type="checkbox" name="categorias[]" value="{{ $item->cd_categoria_objeto }}"> {{ $item->nm_categoria_objeto }}</input>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

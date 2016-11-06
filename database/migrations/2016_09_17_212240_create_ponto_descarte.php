@@ -22,8 +22,6 @@ class CreatePontoDescarte extends Migration
         });
 
         Schema::create('categoria_objeto_ponto_descarte', function (Blueprint $table) {
-            $table->increments('cd_controle');
-
             $table->integer('cd_categoria_objeto')->unsigned()->index();
             $table->foreign('cd_categoria_objeto')->references('cd_categoria_objeto')->on('categoria_objeto')->onDelete('cascade');
 
