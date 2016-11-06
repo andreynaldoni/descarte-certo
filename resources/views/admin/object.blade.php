@@ -45,123 +45,133 @@
             </button>
         </div>
         <!-- Admin Content Add Modal -->
-        <div class="modal fade add-content" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title text-center">Cadastrando novo conteúdo</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="id">Código:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input name="id" type="text" class="form-control" disabled>
+        <form role="form" method="POST" action="/Administrativo/{{ $categoria->nm_categoria_objeto }}/{{ $objeto->nm_objeto_descarte }}/{{ $objeto->cd_objeto_descarte }}">
+            <div class="modal fade add-content" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title text-center">Cadastrando novo conteúdo</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="id">Código:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input name="id" type="text" class="form-control" disabled>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="nome">Nome:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                                        <input name="nome" type="text" class="form-control" placeholder="Ex.: Lixo Eletrônico" maxlength="60" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="nome">Nome:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input name="nome" type="text" class="form-control" placeholder="Ex.: Lixo Eletrônico" maxlength="60" required>
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-sm-12">
+                                    <label for="descricao">Descrição:</label>
+                                    <textarea class="form-control" name="descricao" placeholder="Ex.: Escreva uma descrição aqui" rows="8" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-sm-6">
+                                    <label for="video">YouTube Vídeo:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-film"></i></span>
+                                        <input name="video" type="text" class="form-control" placeholder="Ex.: https://www.youtube.com/embed/VB9OgYxDm7M" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="imagem">Imagem:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                                        <input name="imagem" type="text" class="form-control" placeholder="Ex.: https://link.com/imagem.jpg" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 10px">
-                            <div class="col-sm-12">
-                                <label for="descricao">Descrição:</label>
-                                <textarea class="form-control" name="descricao" placeholder="Ex.: Escreva uma descrição aqui" rows="8" required></textarea>
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
-                        <div class="row" style="margin-top: 10px">
-                            <div class="col-sm-6">
-                                <label for="video">YouTube Vídeo:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-film"></i></span>
-                                    <input name="video" type="text" class="form-control" placeholder="Ex.: https://www.youtube.com/embed/VB9OgYxDm7M" maxlength="60" required>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="video">Imagem:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-                                    <input name="video" type="text" class="form-control" placeholder="Ex.: https://link.com/imagem.jpg" maxlength="60" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- /Admin Content Add Modal -->
         <!-- Admin Object Edit Modal -->
-        <div class="modal fade edit-object" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title text-center">Editando {{ $objeto->nm_objeto_descarte }}</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="id">Código:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input name="id" type="hidden" value="{{ $objeto->cd_objeto_descarte }}">
-                                    <input name="id" type="text" class="form-control" value="{{ $objeto->cd_objeto_descarte }}" disabled>
+        <form method="POST" action="/Administrativo/{{ $categoria->nm_categoria_objeto }}/{{ $objeto->nm_objeto_descarte }}/edit">
+            <div class="modal fade edit-object" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title text-center">Editando {{ $objeto->nm_objeto_descarte }}</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="id">Código:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input name="id" type="hidden" value="{{ $objeto->cd_objeto_descarte }}">
+                                        <input name="id" type="text" class="form-control" value="{{ $objeto->cd_objeto_descarte }}" disabled>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="objeto">Objeto:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                                        <input name="objeto" type="text" class="form-control" value="{{ $objeto->nm_objeto_descarte }}" maxlength="60" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="categoria">Nome:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input name="nome" type="text" class="form-control" value="{{ $objeto->nm_objeto_descarte }}" maxlength="60" required>
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-sm-12">
+                                    <label for="descricao">Descrição:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                                        <input name="descricao" type="text" class="form-control" value="{{ $objeto->ds_objeto_descarte }}" maxlength="60" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 10px">
-                            <div class="col-sm-12">
-                                <label for="descricao">Descrição:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input name="descricao" type="text" class="form-control" value="{{ $objeto->ds_objeto_descarte }}" maxlength="60" required>
-                                </div>
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-success">Editar</button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-success">Salvar</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- /Admin Object Edit Modal -->
         <!-- Admin Object Delete Modal -->
-        <div class="modal fade delete-object" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title text-center">Excluir {{ $objeto->nm_objeto_descarte }}</h2>
-                    </div>
-                    <div class="modal-body">
-                        <h3 class="text-center">Você realmente tem certeza de que vai excluir "{{ $objeto->nm_objeto_descarte }}"?</h3>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-danger">Excluir</button>
+        <form method="POST" action="/Administrativo/{{ $categoria->nm_categoria_objeto }}/{{ $objeto->nm_objeto_descarte }}/delete">
+            <input name="id" type="hidden" value="{{ $objeto->cd_objeto_descarte }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="modal fade delete-object" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title text-center">Excluir {{ $objeto->nm_objeto_descarte }}</h2>
+                        </div>
+                        <div class="modal-body">
+                            <h3 class="text-center">Você realmente tem certeza de que vai excluir "{{ $objeto->nm_objeto_descarte }}"?</h3>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-danger">Excluir</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- /Admin Object Delete Modal -->
     </div>
 @endsection

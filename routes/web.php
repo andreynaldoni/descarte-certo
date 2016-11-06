@@ -14,12 +14,30 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/Pontos de Descarte', 'MapController@index');
-Route::get('/Pontos de Descarte/{ponto}', 'MapController@detail');
+Route::get('/Pontos de Descarte/{ponto}', 'MapController@detalhe');
+
+Route::post('/Pontos de Descarte/edit', 'MapController@postEditPonto');
+Route::post('/Pontos de Descarte/{ponto}/edit', 'MapController@PostEditDetalhe');
+
+Route::post('/Pontos de Descarte', 'MapController@postPonto');
+Route::post('/Pontos de Descarte/{ponto}/{id}', 'MapController@postDetalhe');
 
 Route::get('/Administrativo', 'AdminController@index');
 Route::get('/Administrativo/{categoria}', 'AdminController@categoria');
 Route::get('/Administrativo/{categoria}/{objeto}', 'AdminController@objeto');
 Route::get('/Administrativo/{categoria}/{objeto}/{conteudo}', 'AdminController@conteudo');
+
+Route::post('/Administrativo/{categoria}/delete', 'AdminController@postDeleteCategoria');
+Route::post('/Administrativo/{categoria}/{objeto}/delete', 'AdminController@postDeleteObjeto');
+Route::post('/Administrativo/{categoria}/{objeto}/{conteudo}/delete', 'AdminController@postDeleteConteudo');
+
+Route::post('/Administrativo/{categoria}/edit', 'AdminController@postEditCategoria');
+Route::post('/Administrativo/{categoria}/{objeto}/edit', 'AdminController@postEditObjeto');
+Route::post('/Administrativo/{categoria}/{objeto}/{conteudo}/edit', 'AdminController@postEditConteudo');
+
+Route::post('/Administrativo', 'AdminController@postCategoria');
+Route::post('/Administrativo/{categoria}/{id}', 'AdminController@postObjeto');
+Route::post('/Administrativo/{categoria}/{objeto}/{id}', 'AdminController@postConteudo');
 
 Auth::routes();
 

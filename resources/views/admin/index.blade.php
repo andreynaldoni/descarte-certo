@@ -5,7 +5,7 @@
 @section('content')
     <div class="container" style="margin-top: 30px">
         <div class="page-header">
-            <h1 class="text-center">Administração</h1>
+            <h1 class="text-center">Categorias de Descartes/Recicláveis</h1>
         </div>
         <div class="btn-group btn-breadcrumb">
             <a href="/" class="btn btn-success"><i class="glyphicon glyphicon-home"></i></a>
@@ -23,6 +23,9 @@
             </div>
         @endif
         <div class="pull-right">
+            <a href="/Pontos de Descarte" class="btn btn-success">
+                <h4 style="margin: 2px"><i class="fa fa-arrow-circle-right"></i> Pontos de Descarte</h4 style="padding: 0;margin: 0">
+            </a>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-category">
                 <h4 style="margin: 2px"><i class="fa fa-plus-circle"></i> Nova categoria</h4 style="padding: 0;margin: 0">
             </button>
@@ -32,57 +35,58 @@
         </button> --}}
         <!-- /Admin Categories List -->
         <!-- Admin Category Add Modal -->
-        <div class="modal fade add-category" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-primary">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title text-center">Adicionando nova categoria</h2>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="id">Código:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input name="id" type="text" class="form-control" disabled>
+        <form role="form" method="POST" action="/Administrativo">
+            <div class="modal fade add-category" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title text-center">Adicionando nova categoria</h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="id">Código:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input name="id" type="text" class="form-control" disabled>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="categoria">Categoria:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                                        <input name="categoria" type="text" class="form-control" placeholder="Ex.: Plástico" maxlength="60" required>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="categoria">Categoria:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input name="categoria" type="text" class="form-control" placeholder="Ex.: Plástico" maxlength="60" required>
+                            <div class="row" style="margin-top: 10px">
+                                <div class="col-sm-12">
+                                    <label for="descricao">Descrição:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+                                        <input name="descricao" type="text" class="form-control" placeholder="Ex.: Materiais Plásticos (Garrafas, Copos)" maxlength="60" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-sm-12">
+                                    <label for="imamgem" style="margin-top: 10px">Imagem:</label>
+                                </div>
+                                <div class="col-sm-12">
+                                    <img src="/img/category/3.png" alt="Categoria"height="100">
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 10px">
-                            <div class="col-sm-12">
-                                <label for="descricao">Descrição:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
-                                    <input name="descricao" type="text" class="form-control" placeholder="Ex.: Materiais Plásticos (Garrafas, Copos)" maxlength="60" required>
-                                </div>
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
-                        <div class="row text-center">
-                            <div class="col-sm-12">
-                                <label for="imamgem" style="margin-top: 10px">Imagem:</label>
-                            </div>
-                            <div class="col-sm-12">
-                                <img src="/img/category/3.png" alt="Categoria"height="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- /Admin Category Add Modal -->
-        <!-- Admin Category Remove Modal -->
-        <!-- /Admin Category Remove Modal -->
     </div>
 @endsection

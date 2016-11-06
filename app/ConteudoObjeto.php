@@ -13,7 +13,8 @@ class ConteudoObjeto extends Model
         'ds_conteudo_objeto',
         'ds_caminho_imagem',
         'ds_caminho_video',
-        'ic_tipo'
+        'ic_tipo',
+        'cd_objeto_descarte'
     ];
 
     public $timestamps = false;

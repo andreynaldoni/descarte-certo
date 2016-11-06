@@ -8,7 +8,7 @@ class ObjetoDescarte extends Model
 {
     protected $table = 'objeto_descarte';
     protected $primaryKey = 'cd_objeto_descarte';
-    protected $fillable = ['nm_objeto_descarte', 'ds_objeto_descarte'];
+    protected $fillable = ['nm_objeto_descarte', 'ds_objeto_descarte', 'cd_categoria_objeto'];
 
     public $timestamps = false;
 
